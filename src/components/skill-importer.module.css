@@ -1,0 +1,258 @@
+.importer {
+  margin-bottom: 28px;
+  padding: 24px;
+  background: #fffaf7;
+  border: 1px solid #e6d3c7;
+  border-left: 6px solid var(--accent);
+  border-radius: 8px;
+}
+
+.heading {
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 14px;
+}
+
+.heading > div > span {
+  display: block;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.heading h3 {
+  margin-top: 3px;
+  scroll-margin-top: 92px;
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.icon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  color: #ffffff;
+  background: var(--accent);
+  border-radius: 7px;
+}
+
+.safety {
+  display: inline-flex;
+  min-height: 32px;
+  padding: 0 10px;
+  align-items: center;
+  gap: 6px;
+  color: #315449;
+  background: #edf7f2;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.formRow {
+  display: grid;
+  margin-top: 20px;
+  align-items: end;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 7px;
+  color: #46372f;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.field textarea {
+  display: block;
+  width: 100%;
+  min-height: 96px;
+  padding: 12px 14px;
+  resize: vertical;
+  background: #ffffff;
+  border: 1px solid #cbb8ac;
+  border-radius: 6px;
+  line-height: 1.6;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.field textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+  outline: 0;
+}
+
+.helper {
+  display: block;
+  min-height: 22px;
+  margin-top: 6px;
+  color: #6e5a4f;
+  font-size: 12px;
+}
+
+.helper code {
+  overflow-wrap: anywhere;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-weight: 800;
+}
+
+.inspectButton,
+.preview > button,
+.preview > a {
+  display: inline-flex;
+  min-height: 48px;
+  padding: 0 16px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #ffffff;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  font-weight: 800;
+  white-space: nowrap;
+  transition: background-color 160ms ease, transform 120ms ease;
+}
+
+.inspectButton:hover,
+.preview > button:hover,
+.preview > a:hover {
+  background: #9f350f;
+}
+
+.inspectButton:active,
+.preview > button:active,
+.preview > a:active {
+  transform: scale(0.98);
+}
+
+.preview {
+  display: grid;
+  margin-top: 18px;
+  padding: 18px;
+  align-items: center;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 14px;
+  background: #ffffff;
+  border: 1px solid #d9c7bb;
+  border-radius: 7px;
+  animation: preview-in 260ms both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.preview[data-kind="existing"] {
+  border-color: #b9d8cb;
+}
+
+.previewIcon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  color: var(--success);
+  background: var(--success-soft);
+  border-radius: 7px;
+}
+
+.previewCopy {
+  min-width: 0;
+}
+
+.previewCopy > span {
+  display: block;
+  color: var(--success);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.previewCopy strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 17px;
+  overflow-wrap: anywhere;
+}
+
+.previewCopy p {
+  margin-top: 4px;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.previewCopy small {
+  display: inline-flex;
+  margin-top: 8px;
+  align-items: center;
+  gap: 5px;
+  color: #48635a;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.notice {
+  min-height: 42px;
+  margin-top: 14px;
+  padding: 10px 12px;
+  color: var(--success);
+  background: var(--success-soft);
+  border-left: 3px solid currentColor;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.notice[data-kind="error"] {
+  color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.spin {
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes preview-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 720px) {
+  .importer {
+    padding: 18px;
+  }
+
+  .heading {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .heading h3 {
+    font-size: 18px;
+  }
+
+  .safety {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .formRow,
+  .preview {
+    grid-template-columns: 1fr;
+  }
+
+  .inspectButton,
+  .preview > button,
+  .preview > a {
+    width: 100%;
+  }
+
+  .previewIcon {
+    display: none;
+  }
+}

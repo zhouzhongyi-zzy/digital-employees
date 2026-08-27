@@ -1,0 +1,259 @@
+.hero {
+  overflow: hidden;
+  background: #eef6f2;
+  border-bottom: 1px solid var(--border);
+}
+
+.heroInner {
+  display: grid;
+  width: min(var(--max-width), calc(100% - 48px));
+  min-height: 450px;
+  margin: 0 auto;
+  padding: 72px 0 64px;
+  align-items: center;
+  grid-template-columns: minmax(0, 1.2fr) minmax(360px, 0.8fr);
+  gap: 72px;
+}
+
+.heroCopy {
+  min-width: 0;
+  max-width: 680px;
+}
+
+.eyebrow,
+.sectionHeading > div > span {
+  display: inline-block;
+  color: var(--primary-strong);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.heroCopy h1 {
+  max-width: 680px;
+  margin-top: 18px;
+  overflow-wrap: anywhere;
+  font-size: 54px;
+  font-weight: 800;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.heroCopy > p {
+  max-width: 620px;
+  margin-top: 24px;
+  color: var(--text-muted);
+  font-size: 19px;
+  line-height: 1.75;
+}
+
+.facts {
+  display: flex;
+  margin-top: 32px;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+}
+
+.facts span {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  gap: 8px;
+  color: #344a42;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.facts svg {
+  color: var(--primary);
+}
+
+.heroVisual {
+  position: relative;
+  display: grid;
+  width: min(100%, 520px);
+  min-width: 0;
+  min-height: 260px;
+  align-items: center;
+  justify-self: end;
+  grid-template-columns: 64px minmax(40px, 1fr) 132px minmax(40px, 1fr) 64px;
+}
+
+.visualNode,
+.visualCore {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--foreground);
+}
+
+.visualNode {
+  width: 64px;
+  height: 64px;
+  color: var(--foreground);
+  background: #f4cc63;
+  border-radius: 8px;
+}
+
+.visualNode[data-node="result"] {
+  color: #ffffff;
+  background: #315fbd;
+}
+
+.visualCore {
+  width: 132px;
+  height: 132px;
+  align-content: center;
+  gap: 10px;
+  color: #ffffff;
+  background: var(--primary);
+  border-radius: 8px;
+  box-shadow: 12px 12px 0 #d9e7e1;
+}
+
+.visualCore span {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.visualLine {
+  height: 2px;
+  background: var(--foreground);
+}
+
+.market {
+  width: min(var(--max-width), calc(100% - 48px));
+  margin: 0 auto;
+  padding: 72px 0 96px;
+}
+
+.sectionHeading {
+  display: flex;
+  margin-bottom: 32px;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.sectionHeading h2 {
+  margin-top: 10px;
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+.sectionHeading > p {
+  max-width: 390px;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.footer {
+  display: flex;
+  width: min(var(--max-width), calc(100% - 48px));
+  min-height: 88px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.footer span:first-child {
+  color: var(--foreground);
+  font-weight: 800;
+}
+
+@media (max-width: 920px) {
+  .heroInner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .heroVisual {
+    width: min(520px, 100%);
+    min-height: 180px;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroInner,
+  .market,
+  .footer {
+    width: min(100% - 32px, var(--max-width));
+  }
+
+  .heroInner {
+    min-height: 0;
+    padding: 52px 0 44px;
+  }
+
+  .heroCopy h1 {
+    font-size: 36px;
+    line-height: 1.16;
+    text-wrap: wrap;
+  }
+
+  .heroCopy > p {
+    margin-top: 18px;
+    font-size: 17px;
+  }
+
+  .facts {
+    margin-top: 24px;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .heroVisual {
+    min-height: 136px;
+    grid-template-columns: 52px minmax(22px, 1fr) 96px minmax(22px, 1fr) 52px;
+  }
+
+  .visualNode {
+    width: 52px;
+    height: 52px;
+  }
+
+  .visualCore {
+    width: 96px;
+    height: 96px;
+    box-shadow: 8px 8px 0 #d9e7e1;
+  }
+
+  .visualCore svg {
+    width: 30px;
+  }
+
+  .market {
+    padding: 56px 0 72px;
+  }
+
+  .sectionHeading {
+    margin-bottom: 24px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sectionHeading h2 {
+    font-size: 30px;
+  }
+
+  .sectionHeading > p {
+    text-align: left;
+  }
+
+  .footer {
+    min-height: 104px;
+    padding: 24px 0;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+  }
+}
