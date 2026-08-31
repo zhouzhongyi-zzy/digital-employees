@@ -42,7 +42,7 @@ export function ImportedSkillPage({ identifier }: ImportedSkillPageProps) {
           <PackageX size={30} aria-hidden="true" />
           <h1>当前浏览器没有这个 Skill</h1>
           <p>它可能尚未导入，或已经从“我的技能”中移除。</p>
-          <Link href="/skills"><ArrowLeft size={17} aria-hidden="true" />返回技能广场</Link>
+          <Link href="/" prefetch={false}><ArrowLeft size={17} aria-hidden="true" />返回技能广场</Link>
         </div>
       </main>
     );
@@ -53,7 +53,7 @@ export function ImportedSkillPage({ identifier }: ImportedSkillPageProps) {
   return (
     <main className={styles.main} id="skill-main">
       <nav className={styles.breadcrumb} aria-label="面包屑">
-        <Link href="/skills"><ArrowLeft size={16} aria-hidden="true" />技能广场</Link>
+        <Link href="/" prefetch={false}><ArrowLeft size={16} aria-hidden="true" />技能广场</Link>
         <span aria-hidden="true">/</span>
         <span>{meta.title}</span>
       </nav>

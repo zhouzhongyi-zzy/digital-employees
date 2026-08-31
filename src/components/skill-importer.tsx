@@ -158,7 +158,7 @@ export function SkillImporter({ importedSkills, onImported }: SkillImporterProps
             <strong>{builtInSkill.title}</strong>
             <p>这个 Skill 已经内置，无需重复下载。</p>
           </div>
-          <Link href={`/skills/${builtInSkill.slug}`}>直接使用<ArrowRight size={17} aria-hidden="true" /></Link>
+          <Link href={`/skills/${builtInSkill.slug}`} prefetch={false}>直接使用<ArrowRight size={17} aria-hidden="true" /></Link>
         </div>
       ) : null}
 

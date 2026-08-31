@@ -131,6 +131,7 @@ export function SkillRunner({ skill, instructions }: SkillRunnerProps) {
   const [apiKey, setApiKey] = useState("");
   const [model, setModel] = useState("");
   const [models, setModels] = useState<string[]>([]);
+  const [manualModel, setManualModel] = useState(false);
   const [showKey, setShowKey] = useState(false);
   const [rememberSession, setRememberSession] = useState(true);
   const [hydrated, setHydrated] = useState(false);
@@ -325,6 +326,7 @@ export function SkillRunner({ skill, instructions }: SkillRunnerProps) {
 
       setModels(nextModels);
       if (!model || !nextModels.includes(model)) setModel(nextModels[0]);
+      setManualModel(false);
       setNotice({ kind: "success", text: `已读取 ${nextModels.length} 个可用模型` });
     });
   }
@@ -498,22 +500,44 @@ export function SkillRunner({ skill, instructions }: SkillRunnerProps) {
           <div className={styles.modelField}>
             <label htmlFor="model">模型名称</label>
             <div className={styles.modelRow}>
-              <input
-                id="model"
-                list={`models-${skill.slug}`}
-                value={model}
-                onChange={(event) => setModel(event.target.value)}
-                placeholder="填写或读取模型"
-                spellCheck={false}
-              />
-              <datalist id={`models-${skill.slug}`}>
-                {models.map((item) => <option value={item} key={item} />)}
-              </datalist>
+              {models.length > 0 && !manualModel ? (
+                <div className={styles.modelControl}>
+                  <select
+                    id="model"
+                    value={model}
+                    onChange={(event) => setModel(event.target.value)}
+                    aria-describedby="model-help"
+                  >
+                    {models.map((item) => <option value={item} key={item}>{item}</option>)}
+                  </select>
+                  <button type="button" onClick={() => setManualModel(true)}>手动填写</button>
+                </div>
+              ) : (
+                <div className={styles.modelControl}>
+                  <input
+                    id="model"
+                    value={model}
+                    onChange={(event) => setModel(event.target.value)}
+                    placeholder="填写模型名称"
+                    spellCheck={false}
+                    aria-describedby="model-help"
+                  />
+                  {models.length > 0 ? (
+                    <button type="button" onClick={() => {
+                      setModel((current) => models.includes(current) ? current : models[0]);
+                      setManualModel(false);
+                    }}>选择列表</button>
+                  ) : null}
+                </div>
+              )}
               <button type="button" onClick={loadModels} disabled={activeRequest !== null}>
                 <RefreshCw className={activeRequest === "models" ? styles.spin : undefined} size={17} aria-hidden="true" />
                 {activeRequest === "models" ? "读取中" : "读取模型"}
               </button>
             </div>
+            <span className={styles.modelHelp} id="model-help">
+              {models.length > 0 ? `已读取 ${models.length} 个模型，展开列表即可切换。` : "读取接口模型，或直接填写模型名称。"}
+            </span>
           </div>
         </div>
 

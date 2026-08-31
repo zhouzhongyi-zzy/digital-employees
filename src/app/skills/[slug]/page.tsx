@@ -40,7 +40,7 @@ export default async function SkillPage(props: PageProps<"/skills/[slug]">) {
       <SiteHeader />
       <main className={styles.main} id="skill-main">
         <nav className={styles.breadcrumb} aria-label="面包屑">
-          <Link href="/skills"><ArrowLeft size={16} aria-hidden="true" />技能广场</Link>
+          <Link href="/" prefetch={false}><ArrowLeft size={16} aria-hidden="true" />技能广场</Link>
           <span aria-hidden="true">/</span>
           <span>{skill.title}</span>
         </nav>

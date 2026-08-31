@@ -112,6 +112,7 @@ export function SkillExplorer() {
               <Link
                 className={styles.card}
                 href={href}
+                prefetch={false}
                 data-tone={skill.tone}
                 style={{ animationDelay: `${Math.min(index * 45, 240)}ms` }}
               >

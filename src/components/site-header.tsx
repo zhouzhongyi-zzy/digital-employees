@@ -7,7 +7,7 @@ export function SiteHeader() {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <Link className={styles.brand} href="/" aria-label="SkillFlow 首页">
+        <Link className={styles.brand} href="/" prefetch={false} aria-label="SkillFlow 首页">
           <span className={styles.brandMark} aria-hidden="true">
             <Sparkles size={20} strokeWidth={2} />
           </span>
@@ -18,7 +18,7 @@ export function SiteHeader() {
         </Link>
 
         <nav className={styles.nav} aria-label="主导航">
-          <Link className={styles.navLink} href="/skills#skillhub-import-title">
+          <Link className={styles.navLink} href="/#skillhub-import-title" prefetch={false}>
             <Store size={16} aria-hidden="true" />
             <span>导入 Skill</span>
           </Link>
